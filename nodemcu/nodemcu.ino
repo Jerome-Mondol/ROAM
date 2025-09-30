@@ -18,7 +18,7 @@ void loop() {
 
   // Example: send a command to Arduino
   Wire.beginTransmission(SLAVE_ADDR);
-  Wire.write("F"); // e.g., Forward command
+  Wire.write("Hello from esp"); // e.g., Forward command
   Wire.endTransmission();
 
   delay(1000);

@@ -6,16 +6,16 @@ void setup() {
   Wire.begin(SLAVE_ADDR); // Join I2C bus as slave
   Wire.onRequest(sendData); // Callback when master requests data
   Wire.onReceive(receiveData); // Callback when master sends data
-  Serial.begin(115200);
+  Serial.begin(9600);
 }
 
-void loop() {
-  // You can do sensor/motor stuff here
+void loop() { 
+  // You can do sensor/motor stuff here 
   delay(100);
 }
 
 void sendData() {
-  Wire.write("HELLO ROAM"); // Send message to ESP
+  Wire.write("hello from arduino"); // Send message to ESP
 }
 
 void receiveData(int byteCount) {
