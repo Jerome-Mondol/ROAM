@@ -4,7 +4,8 @@
 #include "Motor.h"
 #include "TurnControl.h"
 
-PID p(2.0, 0.009, 0.2); // initial tuned-ish values: Kp, Ki, Kd
+PID p(2.35, 0.025, 0.35);
+
 mpu m;
 TurnControl *turnCtrl;
 

@@ -51,8 +51,9 @@ public:
       // compute remaining error using shortest path logic
       float error = shortestAngle(absoluteDegrees, angleEstimate);
 
-      // PID compute (input=current angle, target=absoluteDegrees)
-      float control = pid.compute(angleEstimate, absoluteDegrees);
+      // PID compute (input=current angle, target=absoluteDegrees) using time delta (seconds)
+      float dtSec = dt / 1000.0;
+      float control = pid.compute(angleEstimate, absoluteDegrees, dtSec);
 
       // deadband to overcome static friction
       const int MIN_DRIVE = 40; // tweak if necessary
