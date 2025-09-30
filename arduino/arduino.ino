@@ -1,27 +1,13 @@
-#include <Wire.h>
+#include "motorcontrol.h"
 
-#define SLAVE_ADDR 0x08  // I2C address of Arduino
+Motor motors(10, 5, 9, 8, 7, 6); // ENA, ENB, IN1, IN2, IN3, IN4
 
 void setup() {
-  Wire.begin(SLAVE_ADDR); // Join I2C bus as slave
-  Wire.onRequest(sendData); // Callback when master requests data
-  Wire.onReceive(receiveData); // Callback when master sends data
-  Serial.begin(9600);
+  motors.motorSetup();
+  motors.setSpeed(200, 180);
+  motors.testMotors();
 }
 
-void loop() { 
-  // You can do sensor/motor stuff here 
-  delay(100);
-}
-
-void sendData() {
-  Wire.write("hello from arduino"); // Send message to ESP
-}
-
-void receiveData(int byteCount) {
-  while (Wire.available()) {
-    char c = Wire.read();
-    Serial.print(c); // Print received chars
-  }
-  Serial.println();
+void loop() {
+  
 }
